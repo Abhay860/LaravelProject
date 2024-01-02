@@ -9,7 +9,7 @@
   <body>
    <div class="container ">
     <div class="text-right">
-        <a href="{{route('products.index')}}"><button  type="button" class=" my-3  btn btn-primary">Return Product</button></a>
+        <a href="{{route('products.index')}}"><button  type="button" class=" my-3  btn btn-primary">Return Registration</button></a>
     </div>
     
     <table class="table table-striped-columns">
@@ -31,6 +31,13 @@
         <td><img src="{{ asset('product/' . $product->image) }}" alt="image" class="rounded-circle" width="50" height="50"/></td>
         <td>{{ $product->description }}</td>
         <td><a href="{{$product->id}}/edit" class="btn btn-dark btn-sm">Edit</a></td>
+        <td>
+          <form action="{{$product->id}}/delete" method="POST" class="d-inline">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </td>
     </tr>
     @endforeach 
   </tbody>

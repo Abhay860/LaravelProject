@@ -18,45 +18,49 @@
       <div class="card mt-2 p-2">
    <div class="row justify-content-center">
     <div class="col-sm-8">   
-    <form method="post" action="{{route('products.store')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('products.update',['id' => $product->id])}}" enctype="multipart/form-data">
         @csrf
+        @method('PUT')
   <div class="mb-3">
     <label for="name" class="form-label">Full Name</label>
-    <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp" value="{{old('name',$product)}}">
+    <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp" value="{{old('name',$product->name)}}">
     @error('name')
     <span class="text-danger">{{ $message }}</span>
    @enderror
   </div>
   <div class="mb-3">
     <label for="email" class="form-label">Email Address</label>
-    <input type="email" class="form-control" id="email" name="email" value="{{old('email')}}">
+    <input type="email" class="form-control" id="email" name="email" value="{{old('email',$product->email)}}">
     @error('email')
     <span class="text-danger">{{ $message }}</span>
 @enderror
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" name="password" value="{{old('password')}}">
+    <input type="password" class="form-control" id="password" name="password" value="{{old('password',$product->password)}}">
     @error('password')
     <span class="text-danger">{{ $message }}</span>
 @enderror
   </div>
   <div class="mb-3">
     <label for="file" class="form-label">Upload</label>
-    <input type="file" class="form-control" id="file" name="image" value="{{old('image')}}" >
+    <input type="file" class="form-control" id="file" name="image" value="{{old('image',$product->image)}}" >
     @error('image')
     <span class="text-danger">{{ $message }}</span>
 @enderror
   </div>
   <div class="mb-3">
     <label for="text" class="form-label">Description</label>
-    <textarea class="form-control"  placeholder="Leave a comment here" id="floatingTextarea" name="description" > {{old('description')}}</textarea>
+    <textarea class="form-control"  placeholder="Leave a comment here" id="floatingTextarea" name="description" > {{old('description',$product->description)}}</textarea>
     @error('description')
     <span class="text-danger">{{ $message }}</span>
 @enderror
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<div class="text-right">
+  <a href="{{route('products.create')}}"><button  type="button" class=" my-3  btn btn-primary">View List</button></a>
+</div>
 </div>
 </div>
 </div>

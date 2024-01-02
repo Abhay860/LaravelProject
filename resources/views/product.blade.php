@@ -18,7 +18,7 @@
       <div class="card mt-2 p-2">
    <div class="row justify-content-center">
     <div class="col-sm-8">   
-    <form method="post" action="{{route('products.store')}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('products.create')}}" enctype="multipart/form-data">
         @csrf
   <div class="mb-3">
     <label for="name" class="form-label">Full Name</label>
